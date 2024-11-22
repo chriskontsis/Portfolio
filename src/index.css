@@ -1,0 +1,19 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background-color: #111827;
+  color: #fff;
+}
+
+.bg-scanline {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 255, 0, 0.02) 50%,
+    transparent 100%
+  );
+  background-size: 100% 4px;
+}
