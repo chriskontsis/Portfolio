@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 export const CommandLine = ({ command, showPrompt }) => {
   return (
@@ -12,7 +12,6 @@ export const CommandLine = ({ command, showPrompt }) => {
 
 // Add PropTypes validation
 CommandLine.propTypes = {
-    command: PropTypes.any,
-    showPrompt: PropTypes.any,
+  command: PropTypes.any,
+  showPrompt: PropTypes.any,
 };
-  

@@ -1,19 +1,19 @@
-import { useState, useEffect } from 'react';
-import { CommandLine } from './components/CommandLine';
-import { MonitorFrame } from './components/MonitorFrame';
-import { CommandButton } from './components/CommandButton';
-import { 
-  WhoamiContent, 
-  WorkContent, 
-  ProjectsContent, 
-  BlogContent, 
-  HelpContent 
-} from './components/ContentRenderers';
-import { portfolioData } from './data/portfolio';
+import { useState, useEffect } from "react";
+import { CommandLine } from "./components/CommandLine";
+import { MonitorFrame } from "./components/MonitorFrame";
+import { CommandButton } from "./components/CommandButton";
+import {
+  WhoamiContent,
+  WorkContent,
+  ProjectsContent,
+  BlogContent,
+  HelpContent,
+} from "./components/ContentRenderers";
+import { portfolioData } from "./data/portfolio";
 
 function App() {
-  const [setActiveCommand] = useState('');
-  const [commandHistory, setCommandHistory] = useState(['whoami']);
+  const [setActiveCommand] = useState("");
+  const [commandHistory, setCommandHistory] = useState(["whoami"]);
   const [showPrompt, setShowPrompt] = useState(true);
 
   const commands = {
@@ -26,20 +26,20 @@ function App() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setShowPrompt(prev => !prev);
+      setShowPrompt((prev) => !prev);
     }, 530);
 
     return () => clearInterval(interval);
   }, []);
 
   const handleCommand = (cmd) => {
-    setCommandHistory(prev => [...prev, cmd]);
+    setCommandHistory((prev) => [...prev, cmd]);
     setActiveCommand(cmd);
   };
 
   const clearTerminal = () => {
-    setCommandHistory(['whoami']);
-    setActiveCommand('whoami');
+    setCommandHistory(["whoami"]);
+    setActiveCommand("whoami");
   };
 
   return (
@@ -48,7 +48,7 @@ function App() {
         <MonitorFrame>
           <div className="bg-gray-900 p-6 min-h-[600px] relative overflow-hidden">
             <div className="absolute top-0 left-0 right-0 bottom-0 bg-scanline pointer-events-none"></div>
-            
+
             <div className="space-y-6">
               {commandHistory.map((cmd, index) => (
                 <div key={index}>
@@ -64,7 +64,11 @@ function App() {
 
         <div className="mt-6 grid grid-cols-3 gap-4 md:grid-cols-6">
           {Object.keys(commands).map((cmd) => (
-            <CommandButton key={cmd} command={cmd} onClick={() => handleCommand(cmd)} />
+            <CommandButton
+              key={cmd}
+              command={cmd}
+              onClick={() => handleCommand(cmd)}
+            />
           ))}
           <CommandButton command="clear" onClick={clearTerminal} />
         </div>
